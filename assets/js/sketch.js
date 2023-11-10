@@ -6,28 +6,20 @@ var flashCounter = 0
 var flashInterval
 var divState = 'up' // up, down, movingup, movingdown
 let isMovingRight = true;
-var sound1
-var sound2
-var sound3
-var sound4
-var sound5
-var sound6
-var sound7
-var sound8
-var sound9
 
-
+let sounds = {}
 
 function preload() {
-  sound1 = loadSound('assets/clap.wav')
-  sound2 = loadSound('assets/808.wav')
-  sound3 = loadSound('assets/shutter.wav')
-  sound4 = loadSound('assets/rise.wav')
-  sound5 = loadSound('assets/8082.wav')
-  sound6 = loadSound('assets/click.wav')
-  sound7 = loadSound('assets/impact.wav')
-  sound8 = loadSound('assets/slide.wav')
-  sound9 = loadSound('assets/snare.wav')
+
+  sounds["a"] = loadSound('assets/sounds/clap.wav')
+  sounds["s"] = loadSound('assets/sounds/808.wav')
+  sounds["d"] = loadSound('assets/sounds/shutter.wav')
+  sounds["f"] = loadSound('assets/sounds/rise.wav')
+  sounds["g"] = loadSound('assets/sounds/8082.wav')
+  sounds["h"] = loadSound('assets/sounds/click.wav')
+  sounds["j"] = loadSound('assets/sounds/impact.wav')
+  sounds["k"] = loadSound('assets/sounds/slide.wav')
+  sounds["l"] = loadSound('assets/sounds/snare.wav')
   
 }
 
@@ -51,7 +43,7 @@ function draw() {
 function keyPressed() {
   // for a
   if (key === 'a'|| key ==='A') {
-    sound1.play()
+    sounds["a"].play()
     flashCounter = 0
     if (flashInterval) {
       clearInterval(flashInterval)
@@ -64,7 +56,7 @@ function keyPressed() {
 
   // for s
   if (key === 's' || key ==='S') {
-    sound2.play()
+    sounds["s"].play()
     var secondMotionDiv = document.querySelector('.second-motion')
 
     // if div currently animating, do nothing
@@ -104,19 +96,19 @@ function keyPressed() {
   // for d
   if (key === 'd' || key === 'D') {
     animateCircleDiv();
-    sound3.play()
+    sounds["d"].play()
 }
 
 
   // for f
   if (key === 'f' || key === 'F') {
-    sound4.play()
+    sounds["f"].play()
     animateRectangle()
   }
 
 // for g
 if (key === 'g' || key === 'G') {
-  sound5.play()
+    sounds["g"].play()
   var fourthMotionDiv = document.querySelector('.fourth-motion')
   var fourthMotionState = 'left'; // initialize the state for the fourth-motion div
 
@@ -158,7 +150,7 @@ if (key === 'g' || key === 'G') {
 if (key === 'h' || key === 'H') {
   circleFade();
   setTimeout(function() {
-    sound6.play();
+    sounds["h"].play();
   }, 500); // Delays the sound playing by 500ms
 }
 
@@ -166,20 +158,20 @@ if (key === 'h' || key === 'H') {
 
 //for j
 if (key === 'j' || key === 'J') {
-  sound7.play()
+  sounds["j"].play()
   animateZigzag()
 }
 
 
 // for k
 if (key === 'k' || key === 'K') {
-  sound8.play()
+  sounds["k"].play()
   animateLine()
 }
 
  // for l
  if (key === 'l' || key === 'L') {
-  sound9.play()
+  sounds["l"].play()
   flashCounter = 0
   if (flashInterval) {
     clearInterval(flashInterval)
